@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="22" fill="#10211F"/>
+  <!-- setback glass tower: stacked volumes, one vision -->
+  <rect x="34" y="22" width="32" height="16" rx="2" fill="#4FB3A9"/>
+  <rect x="28" y="42" width="44" height="16" rx="2" fill="#2F8F87"/>
+  <rect x="22" y="62" width="56" height="16" rx="2" fill="#C2813D"/>
+</svg>

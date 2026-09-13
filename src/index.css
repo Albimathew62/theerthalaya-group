@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --glass-bg-light: rgba(255, 255, 255, 0.62);
+  --glass-border-light: rgba(255, 255, 255, 0.7);
+  --glass-blur: 18px;
+  --glass-blur-sm: 12px;
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #F5F7F8;
+  color: #14181B;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::selection { background: #14181B; color: #F5F7F8; }
+
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: #ECEFF1; }
+::-webkit-scrollbar-thumb { background: #c3ccd1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #5B7B8C; }
+
+@layer components {
+  /* Light frosted glass — nav, hero badge, floating venture cards */
+  .glass {
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    border: 1px solid var(--glass-border-light);
+    box-shadow: 0 24px 60px rgba(20, 24, 27, 0.12), var(--glass-inner);
+  }
+  .glass-card {
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(var(--glass-blur-sm)) saturate(135%);
+    -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(135%);
+    border: 1px solid var(--glass-border-light);
+    box-shadow: 0 16px 40px rgba(20, 24, 27, 0.14), var(--glass-inner);
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee linear infinite; will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  .marquee-track { animation: none !important; }
+}

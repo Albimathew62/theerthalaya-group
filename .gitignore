@@ -1,0 +1,15 @@
+node_modules
+dist
+.env
+.DS_Store
+.backup
+
+# Raw/source video assets — not served by the app (see README "Video assets").
+# The processed, actually-used frames/video live under public/.
+/hero.mp4
+/hero-v2.mp4
+/hero-trimmed-1080.mp4
+/hero-sky-patch.png
+/scrollvideo.mp4
+/showcase-4k-master.mp4
+/video1.mp4
