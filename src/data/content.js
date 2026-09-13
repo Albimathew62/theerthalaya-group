@@ -8,6 +8,11 @@
 const u = (id, w = 1600) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
+// Locally-served assets live under /public. Root-relative "/x" strings break once the
+// app is deployed under a sub-path (e.g. GitHub Pages' /<repo>/), so route them through
+// Vite's BASE_URL instead of hardcoding a leading slash.
+const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
 export const companyInfo = {
   name: "THEERTHALAYA",
   tagline: "Group of Companies",
@@ -73,7 +78,7 @@ export const subsidiaries = [
     icon: "Building2",
     children: ["Residential", "Commercial", "Infrastructure"],
     locations: ["Pathanamthitta", "Kollam", "Ernakulam", "Thrissur", "Idukki"],
-    image: "/ventures/shikha-builders.webp",
+    image: asset("/ventures/shikha-builders.webp"),
   },
   {
     id: 2,
@@ -86,7 +91,7 @@ export const subsidiaries = [
     icon: "Droplets",
     children: ["Production", "Bottling", "Distribution"],
     locations: ["Konni, Pathanamthitta", "Idukki"],
-    image: "/ventures/theertham-pure-water.webp",
+    image: asset("/ventures/theertham-pure-water.webp"),
   },
   {
     id: 3,
@@ -99,7 +104,7 @@ export const subsidiaries = [
     icon: "Coins",
     children: ["Micro-loans", "Financial support", "Community development"],
     locations: ["Pathanamthitta", "Kollam", "Ernakulam", "Thrissur", "Idukki"],
-    image: "/ventures/tlm-finance.webp",
+    image: asset("/ventures/tlm-finance.webp"),
   },
   {
     id: 4,
@@ -112,7 +117,7 @@ export const subsidiaries = [
     icon: "Milk",
     children: ["Milk", "Dairy products", "Livestock", "Butterfly garden"],
     locations: ["Rajagiri, Koodal, Pathanamthitta"],
-    image: "/ventures/ramagiri-dairy-farm.webp",
+    image: asset("/ventures/ramagiri-dairy-farm.webp"),
   },
   {
     id: 5,
@@ -125,7 +130,7 @@ export const subsidiaries = [
     icon: "Sprout",
     children: ["Crops", "Organic farming", "Estates"],
     locations: ["Vandiperiyar, Idukki"],
-    image: "/ventures/ramagiri-green-farms.webp",
+    image: asset("/ventures/ramagiri-green-farms.webp"),
   },
   {
     id: 6,
@@ -138,7 +143,7 @@ export const subsidiaries = [
     icon: "Palmtree",
     children: ["Resorts", "Tourism", "Leisure"],
     locations: ["Thekkady, Idukki", "Aymanam, Kottayam"],
-    image: "/ventures/gowriramam-retreat.webp",
+    image: asset("/ventures/gowriramam-retreat.webp"),
   },
   {
     id: 7,
@@ -151,7 +156,7 @@ export const subsidiaries = [
     icon: "Leaf",
     children: ["Processing", "Packaging", "Distribution"],
     locations: [], // PLACEHOLDER — location not supplied
-    image: "/ventures/theertham-premium-tea.webp",
+    image: asset("/ventures/theertham-premium-tea.webp"),
   },
   {
     id: 8,
@@ -164,7 +169,7 @@ export const subsidiaries = [
     icon: "Leaf",
     children: ["Cultivation", "Processing", "Packaging", "Distribution"],
     locations: [], // PLACEHOLDER — location not supplied
-    image: "/ventures/ramagiri-estate.webp",
+    image: asset("/ventures/ramagiri-estate.webp"),
   },
   {
     id: 9,
@@ -178,7 +183,7 @@ export const subsidiaries = [
     icon: "UtensilsCrossed",
     children: ["Dining", "Catering", "Beverage"],
     locations: ["Konni", "Kundara", "Adoor", "Kottayam", "Ernakulam", "Thiruvananthapuram"],
-    image: "/ventures/gowriramam-dine.webp",
+    image: asset("/ventures/gowriramam-dine.webp"),
   },
   {
     id: 10,
@@ -191,7 +196,7 @@ export const subsidiaries = [
     icon: "Warehouse",
     children: ["Cement & steel", "Bricks", "Supply"],
     locations: ["Ernakulam", "Kollam", "Pathanamthitta"],
-    image: "/ventures/shikha-buildmart-and-metals.webp",
+    image: asset("/ventures/shikha-buildmart-and-metals.webp"),
   },
 ];
 
@@ -203,7 +208,7 @@ export const services = [
     label: "Quality",
     description:
       "Every venture is measured against the same bar: the standard that earned the Theerthalaya name its trust.",
-    image: "/services/quality-control.webp",
+    image: asset("/services/quality-control.webp"),
   },
   {
     id: 2,
@@ -211,7 +216,7 @@ export const services = [
     label: "Trust",
     description:
       "Partners, banks and communities have relied on the group for generations. We protect that the way we protect any asset.",
-    image: "/services/lasting-trust.webp",
+    image: asset("/services/lasting-trust.webp"),
   },
   {
     id: 3,
@@ -219,7 +224,7 @@ export const services = [
     label: "Sustainable growth",
     description:
       "We build ventures to outlast a cycle, diversified across sectors, rooted locally, and grown responsibly.",
-    image: "/services/sustainable-growth.webp",
+    image: asset("/services/sustainable-growth.webp"),
   },
 ];
 
@@ -297,9 +302,9 @@ export const images = {
   cta: u("1431576901776-e539bd916ba2", 1600),
   // Poster / fallback for the enlarging showcase — a real frame of the video,
   // so it no longer duplicates the photo used by `cta`.
-  showcase: "/showcase-poster.jpg",
+  showcase: asset("/showcase-poster.jpg"),
   // Local brand showcase video (served from /public). Generated for Theerthalaya.
-  showcaseVideo: "/showcase.mp4",
+  showcaseVideo: asset("/showcase.mp4"),
   // flagship / projects sequence
   gallery: [
     u("1541888946425-d81bb19240f5", 1600),

@@ -16,12 +16,14 @@ import { heroContent } from '../data/content';
 
    Regenerate the frames from hero.mp4 (see README) if the source changes.  */
 
-const FRAME_DIR = '/hero-frames';
+// Root-relative paths break once the app is deployed under a sub-path (e.g.
+// GitHub Pages' /<repo>/), so route them through Vite's BASE_URL.
+const FRAME_DIR = `${import.meta.env.BASE_URL}hero-frames`;
 // Completed building — reduced-motion only. Two crops, matching the two frame
 // sets: the landscape one cover-fits into a phone band as a meaningless middle
 // slice of the facade.
-const POSTER = '/hero-poster.jpg';
-const POSTER_M = '/hero-poster-m.jpg';
+const POSTER = `${import.meta.env.BASE_URL}hero-poster.jpg`;
+const POSTER_M = `${import.meta.env.BASE_URL}hero-poster-m.jpg`;
 
 // Holds the opening frame for the first slice of the track so the first
 // impression lands before anything moves; the remainder maps linearly. Smaller
