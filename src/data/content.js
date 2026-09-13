@@ -55,11 +55,13 @@ export const stats = [
   { value: "40", suffix: "yr", label: "Years of trust" }, // PLACEHOLDER
 ];
 
-// Footprint numbers used in the dark strip — PLACEHOLDERS
+// Footprint numbers. Net worth is client-supplied; the rest are PLACEHOLDERS.
+// AnimatedCounter splits any leading non-digits off `value` as a prefix and
+// groups the number with en-IN, so "₹1500" renders as ₹1,500.
 export const footprint = [
   { value: "10", suffix: "", label: "Divisions in operation" },
+  { value: "₹1500", suffix: "Cr", label: "Total net worth" },
   { value: "2500", suffix: "+", label: "People employed" },
-  { value: "3.2", suffix: "ML", label: "Daily water capacity" },
   { value: "40", suffix: "yr", label: "Years of trust" },
 ];
 
