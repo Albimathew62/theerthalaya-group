@@ -79,8 +79,8 @@ function HeroType({ stage, textY, supportOpacity, still }) {
   const [line1, line2] = heroContent.heading;
 
   return (
-    <div className="relative lg:absolute lg:inset-0 z-20 h-full flex items-end lg:items-center pointer-events-none">
-      <div className="w-full max-w-[1280px] mx-auto px-6 lg:px-10 pb-10 lg:pb-0">
+    <div className="relative lg:absolute lg:inset-0 z-20 h-full flex items-center pointer-events-none">
+      <div className="w-full max-w-[1280px] mx-auto px-6 lg:px-10 py-6 lg:py-0">
         <motion.div style={still ? undefined : { y: textY }} className="lg:max-w-[46%]">
           {/* All four labels share one 16px slot; only the active one is lit. */}
           {!still && (
@@ -311,7 +311,7 @@ export default function Hero() {
   if (reduce) {
     return (
       <section id="home" className="relative h-[100svh] bg-ink flex flex-col lg:block" data-nav-theme="dark">
-        <div className="relative h-[52%] lg:h-full lg:absolute lg:inset-0 overflow-hidden">
+        <div className="relative h-[60%] lg:h-full lg:absolute lg:inset-0 overflow-hidden">
           <picture>
             <source media="(min-width: 1024px)" srcSet={POSTER} />
             <img
@@ -335,7 +335,7 @@ export default function Hero() {
       <div className="sticky top-0 h-[100svh] overflow-hidden bg-ink flex flex-col lg:block" data-nav-theme="dark">
         {/* Visual — full bleed on desktop, the upper band on mobile so the type
             below it is a composition of its own rather than a crop. */}
-        <div className="relative h-[52%] lg:h-full lg:absolute lg:inset-0 overflow-hidden bg-ink">
+        <div className="relative h-[60%] lg:h-full lg:absolute lg:inset-0 overflow-hidden bg-ink">
           <canvas ref={canvasRef} aria-hidden className="absolute inset-0 w-full h-full" />
           <Scrims />
         </div>
