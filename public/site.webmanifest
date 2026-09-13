@@ -1,0 +1,15 @@
+{
+  "name": "Theerthalaya Group of Companies",
+  "short_name": "Theerthalaya",
+  "description": "A diversified group across construction, mineral water, finance, dairy, agriculture, hospitality, tea, dining and building materials.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#14181B",
+  "theme_color": "#14181B",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

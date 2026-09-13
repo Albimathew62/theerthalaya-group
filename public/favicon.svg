@@ -1,7 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="22" fill="#10211F"/>
-  <!-- setback glass tower: stacked volumes, one vision -->
-  <rect x="34" y="22" width="32" height="16" rx="2" fill="#4FB3A9"/>
-  <rect x="28" y="42" width="44" height="16" rx="2" fill="#2F8F87"/>
-  <rect x="22" y="62" width="56" height="16" rx="2" fill="#C2813D"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Theerthalaya Group">
+  <rect width="100" height="100" rx="22" fill="#14181B"/>
+  <!-- T monogram. Drawn as rects, not <text>: an SVG favicon renders outside
+       the page, so a webfont would not be available to it. Sized to fill ~60%
+       of the canvas — enough weight to survive 16px without crowding the
+       corners at 180px+. -->
+  <rect x="20" y="21" width="60" height="14" rx="2" fill="#F5F7F8"/>
+  <rect x="43" y="21" width="14" height="44" rx="2" fill="#F5F7F8"/>
+  <!-- Slate rule, echoing the hairlines that bracket GROUP in the wordmark. -->
+  <rect x="34" y="73" width="32" height="6" rx="3" fill="#5B7B8C"/>
 </svg>
