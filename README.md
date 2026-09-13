@@ -94,7 +94,8 @@ GRADE="eq=contrast=1.38:saturation=2.40:brightness=0.045:gamma=1.05,colorbalance
 ffmpeg -y -ss 2.6 -t 6.1 -i hero-v2.mp4   -vf "fps=10,$GRADE,scale=1920:1080:flags=lanczos,showinfo" -fps_mode passthrough   -c:v libwebp -quality 74 public/hero-frames/d/f_%03d.webp
 
 # Mobile. Square crop centred on the building; same fps, so one manifest covers both.
-ffmpeg -y -ss 2.6 -t 6.1 -i hero-v2.mp4   -vf "fps=10,crop=2160:2160:860:0,$GRADE,scale=900:900:flags=lanczos" -fps_mode passthrough   -c:v libwebp -quality 74 public/hero-frames/m/f_%03d.webp
+# NOTE: 720x720 q58, NOT 900x900 q74 like the desktop set — see "Mobile hero weight" below.
+ffmpeg -y -ss 2.6 -t 6.1 -i hero-v2.mp4   -vf "fps=10,crop=2160:2160:860:0,$GRADE,scale=720:720:flags=lanczos" -fps_mode passthrough   -c:v libwebp -quality 58 public/hero-frames/m/f_%03d.webp
 
 # Reduced-motion stills — last frame of each set, already graded.
 ffmpeg -y -i "$(ls public/hero-frames/d/*.webp | tail -1)" -q:v 4 public/hero-poster.jpg
@@ -105,6 +106,26 @@ ffmpeg -y -i "$(ls public/hero-frames/m/*.webp | tail -1)" -q:v 4 public/hero-po
 nothing in `Hero.jsx` changes when the sampling does — but the stage thresholds
 in `content.js` are derived from the duration and `LEAD_IN`, so re-derive those
 if either moves.
+
+## Mobile hero weight
+
+The mobile set is deliberately cheaper than the desktop one: **720x720 at
+quality 58 (~3.5MB across 61 frames)**, against the desktop set's 1920x1080 at
+quality 74 (~13MB). At 900x900 q74 the mobile set was 6.6MB, and because all 61
+frames are fetched at mount (6 at a time) it saturated a phone connection — the
+page sat spinning while the hero frames hogged the pipe.
+
+Both variants still share one `manifest.json`, so the frame *count* must stay
+equal between `d/` and `m/`; only the pixel size and quality differ. Frames are
+drawn with `drawCover(ctx, img, canvas.width, canvas.height)`, which cover-fits
+whatever resolution arrives, so changing the mobile dimensions needs no code
+change. Note these frames are upscaled on a high-DPI phone either way (the
+canvas backing store is ~1170px wide at DPR 3), which is why quality was cut
+before dimensions — the softness is dominated by that upscale, not by q58.
+
+If mobile is still slow, the next lever is loading only every *second* frame
+when `variant === 'm'`: `paint()` already falls back to the nearest loaded
+frame, so the shared manifest and the desktop path both stay untouched.
 
 ## The original hero.mp4 (superseded)
 
