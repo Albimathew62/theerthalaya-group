@@ -119,7 +119,7 @@ export default function ContactCTA() {
                     {status === 'error' && (
                       <p className="mt-4 text-[13px] text-red-500">
                         Something went wrong. Please email us directly at{' '}
-                        <a href="mailto:hello@theerthalayagroup.in" className="underline">hello@theerthalayagroup.in</a>
+                        <a href={`mailto:${contact.email}`} className="underline">{contact.email}</a>
                       </p>
                     )}
                     <Button

@@ -293,7 +293,7 @@ export const faqs = [
 export const contact = {
   office: "Theerthalaya House, Kerala, India", // PLACEHOLDER
   email: "theerthalayagroup@gmail.com",
-  investorEmail: "partners@theerthalayagroup.in", // PLACEHOLDER
+  investorEmail: "theerthalayagroup@gmail.com",
   phone: "+91 95441 21531",
 };
 
