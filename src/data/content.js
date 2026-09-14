@@ -294,7 +294,7 @@ export const contact = {
   office: "Theerthalaya House, Kerala, India", // PLACEHOLDER
   email: "theerthalayagroup@gmail.com",
   investorEmail: "partners@theerthalayagroup.in", // PLACEHOLDER
-  phone: "+91 000 000 0000", // PLACEHOLDER
+  phone: "+91 95441 21531",
 };
 
 export const images = {

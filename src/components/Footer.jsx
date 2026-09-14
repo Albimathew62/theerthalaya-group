@@ -46,7 +46,7 @@ export default function Footer() {
             <h4 className="text-[11px] tracking-[0.18em] uppercase text-brass-light mb-5">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3"><MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" /><span className="text-[13.5px]">{contact.office}</span></li>
-              <li className="flex items-center gap-3"><Phone className="w-5 h-5" /><a href={`tel:${contact.phone}`} className="block py-1 text-[13.5px] hover:text-paper">{contact.phone}</a></li>
+              <li className="flex items-center gap-3"><Phone className="w-5 h-5" /><a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="block py-1 text-[13.5px] hover:text-paper">{contact.phone}</a></li>
               <li className="flex items-center gap-3"><Mail className="w-5 h-5" /><a href={`mailto:${contact.email}`} className="block py-1 text-[13.5px] hover:text-paper">{contact.email}</a></li>
             </ul>
           </div>
