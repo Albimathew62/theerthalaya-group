@@ -4,7 +4,7 @@ import { FadeIn } from './ui/Animations';
 import Button from './ui/Button';
 import { contact } from '../data/content';
 
-const EMPTY = { firstName: '', lastName: '', email: '', phone: '', message: '' };
+const EMPTY = { firstName: '', lastName: '', email: '', phone: '', message: '', botcheck: '' };
 
 export default function ContactCTA() {
   const [form, setForm] = useState(EMPTY);
@@ -24,6 +24,7 @@ export default function ContactCTA() {
           email: form.email,
           phone: form.phone,
           message: form.message,
+          botcheck: form.botcheck,
           subject: 'New enquiry: Theerthalaya Group',
           from_name: 'Theerthalaya Group Website',
         }),
@@ -94,6 +95,21 @@ export default function ContactCTA() {
                   </div>
                 ) : (
                   <form onSubmit={onSubmit}>
+                    {/* Web3Forms honeypot. Hidden from people and from the tab
+                        order; bots fill it in and the API then drops the
+                        submission. The access key is public by design, so this
+                        is the spam defence that matters. */}
+                    <input
+                      type="text"
+                      name="botcheck"
+                      value={form.botcheck}
+                      onChange={onChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      className="absolute w-px h-px -m-px p-0 overflow-hidden border-0"
+                      style={{ clip: 'rect(0 0 0 0)' }}
+                    />
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="firstName" className={label}>First name</label>

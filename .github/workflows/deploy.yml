@@ -24,6 +24,11 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
+        env:
+          # Web3Forms access key. Not a secret credential — it is a public alias
+          # for the destination inbox and ships in the client bundle either way.
+          # Held as a repo secret only to keep it out of git history.
+          VITE_WEB3FORMS_KEY: ${{ secrets.VITE_WEB3FORMS_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
